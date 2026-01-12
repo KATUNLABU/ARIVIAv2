@@ -1,0 +1,556 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="KATUN ARIVIA | Business Printing Solutions">
+	
+	<nav>
+        <div class="logo">
+            <div class="diamond"></div> 
+            ARIVIA
+        </div>
+        
+        <button class="mobile-menu-btn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-links">
+            <a href="#value">RENTABILIDAD</a>
+            <a href="#portfolio">MODELOS</a>
+            <a href="#specs">TECNOLOGÍA</a>
+            <a href="#partner">SOPORTE</a>
+        </div>
+        <button class="nav-btn">CONSULTORÍA TCO</button>
+    </nav>
+
+    <canvas id="webgl"></canvas>
+
+    <div class="scroll-container">
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-anim-title">
+                    <div class="line line-1 outline-text">KATUN</div>
+                    <div class="line line-2 glow-text">ARIVIA</div>
+                    <div class="line line-3 outline-text">SERIES</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INFO SECTION -->
+        <section class="info-section">
+            <div class="hero-info">
+                <h1>La Nueva Era de Impresión Multifuncional Rentable.</h1>
+                <p class="subtitle">No estamos reinventando la industria, solo la hacemos más rentable, confiable y accesible para tu negocio.</p>
+                <div class="cta-group">
+                    <button class="btn primary">Descarga el catálogo</button>
+                    <button class="btn secondary">Solicita consultoría</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- VALUE PROPOSITION (Horizontal Scroll) -->
+        <section id="value" class="horizontal-section">
+            <div class="section-header-sticky">
+                <h2>MAXIMIZA TU RENTABILIDAD</h2>
+                <p>El Mejor TCO del Mercado</p>
+            </div>
+            <div class="horizontal-wrapper">
+                
+                <!-- Card 01 -->
+                <div class="h-card">
+                    <div class="card-number">01</div>
+                    <div class="card-content">
+                        <h3>MAYOR MARGEN</h3>
+                        <p>Diseñadas para optimizar el flujo de efectivo con plazos de hasta 36 meses. No limites tus proyectos por costes operativos. Recupera tu inversión más rápido.</p>
+                    </div>
+                    <div class="dot-grid"></div>
+                </div>
+
+                <!-- Card 02 -->
+                <div class="h-card">
+                    <div class="card-number">02</div>
+                    <div class="card-content">
+                        <h3>TECNOLOGÍA LED</h3>
+                        <p>Calidad superior con menor consumo energético y mayor vida útil en comparación con el láser tradicional. 1200 x 2400 dpi reales de resolución.</p>
+                    </div>
+                    <div class="dot-grid"></div>
+                </div>
+
+                <!-- Card 03 -->
+                <div class="h-card">
+                    <div class="card-number">03</div>
+                    <div class="card-content">
+                        <h3>GARANTÍA TOTAL</h3>
+                        <p>Respaldamos tu inversión con 3 años de garantía y reemplazos completos (Assy’s) para asegurar la continuidad absoluta de tu operación.</p>
+                    </div>
+                    <div class="dot-grid"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PRODUCT PORTFOLIO (Grid) -->
+        <section id="portfolio" class="portfolio-section">
+            <div class="container">
+                <h2>PORTAFOLIO INTELIGENTE</h2>
+                <p class="section-sub">11 Modelos A3 Diseñados para Cada Necesidad</p>
+                
+                <div class="portfolio-grid">
+                    <!-- Color Series -->
+                    <div class="p-card">
+                        <div class="p-tag">COLOR SERIES</div>
+                        <h3>ARIVIA C-SERIES</h3>
+                        <ul class="specs-list">
+                            <li>Modelos: C2125, C2130, C3135</li>
+                            <li>Modelos High: C3145, C4155, C4165</li>
+                            <li>Resolución: 1200 x 2400 dpi</li>
+                            <li>Soporte: Papel hasta 300g</li>
+                        </ul>
+                        <button class="btn-small">Ver Modelos</button>
+                    </div>
+
+                    <!-- Mono Series -->
+                    <div class="p-card">
+                        <div class="p-tag">MONO SERIES</div>
+                        <h3>ARIVIA M-SERIES</h3>
+                        <ul class="specs-list">
+                            <li>Modelos: M2125, M2130, M3135</li>
+                            <li>Modelos High: M3145, M4155</li>
+                            <li>Alta eficiencia en B/N</li>
+                            <li>Diseño Robusto</li>
+                        </ul>
+                        <button class="btn-small">Ver Modelos</button>
+                    </div>
+
+                    <!-- Future -->
+                    <div class="p-card highlight">
+                        <div class="p-tag">COMING SOON</div>
+                        <h3>LÍNEA A4</h3>
+                        <p>Lanzamiento a principios de 2026. La misma potencia, tamaño compacto.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TECH SPECS -->
+        <section id="specs" class="specs-section">
+            <div class="container">
+                <div class="specs-layout">
+                    <div class="specs-text">
+                        <h2>TECNOLOGÍA Y RENDIMIENTO</h2>
+                        <div class="spec-item">
+                            <h4>VELOCIDAD EXTREMA</h4>
+                            <p>Escaneo de hasta 270 ipm. Alimentador de un solo paso en todos los modelos.</p>
+                        </div>
+                        <div class="spec-item">
+                            <h4>VERSATILIDAD DE MEDIOS</h4>
+                            <p>Imprime sobre adhesivos, etiquetas y banners de forma sencilla.</p>
+                        </div>
+                        <div class="spec-item">
+                            <h4>SOSTENIBILIDAD</h4>
+                            <p>Sistemas avanzados de reciclado de tóner integrados.</p>
+                        </div>
+                    </div>
+                    <div class="specs-visual">
+                         <!-- Visual representation or 3D view trigger -->
+                         <div class="cyber-box">
+                            <span class="cyber-line"></span>
+                            <h3>SYSTEM READY</h3>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PARTNER / FOOTER -->
+        <section id="partner" class="partner-section">
+            <div class="container text-center">
+                <h2>MÁS QUE UNA IMPRESORA,<br>UN SOCIO ESTRATÉGICO</h2>
+                <div class="partner-grid">
+                    <div class="partner-item">
+                        <h3>KDFM GRATIS</h3>
+                        <p>Licencia incluida por 3 años.</p>
+                    </div>
+                    <div class="partner-item">
+                        <h3>DISPONIBILIDAD</h3>
+                        <p>Stock garantizado de partes y consumibles.</p>
+                    </div>
+                    <div class="partner-item">
+                        <h3>PARTNER PORTAL</h3>
+                        <p>E-commerce para gestión rápida.</p>
+                    </div>
+                </div>
+                <footer>
+                    <p>&copy; 2026 Katun Corporation. All rights reserved.</p>
+                </footer>
+            </div>
+        </section>
+    </div>
+</Layout>
+
+<script>
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+    import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+    // Register GSAP plugins
+    gsap.registerPlugin(ScrollTrigger);
+
+    // --- Mobile Menu Logic ---
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const links = document.querySelectorAll('.nav-links a');
+
+    if (menuBtn && navLinks) {
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    }
+
+    // --- Three.js Setup ---
+    const canvas = document.querySelector('#webgl') as HTMLCanvasElement;
+    if (canvas) {
+        const scene = new THREE.Scene();
+
+        // Detect mobile device
+        const isMobile = window.innerWidth < 768;
+
+        // Camera setup
+        const sizes = {
+            width: window.innerWidth,
+            height: window.innerHeight
+        };
+        const camera = new THREE.PerspectiveCamera(isMobile ? 60 : 75, sizes.width / sizes.height, 0.1, 100);
+        camera.position.z = isMobile ? 3.5 : 2.8; // Más lejos en móvil para ver mejor el modelo
+        scene.add(camera);
+
+        // Renderer setup
+        const renderer = new THREE.WebGLRenderer({
+            canvas: canvas,
+            alpha: true, // Transparent background to blend with CSS
+            antialias: !isMobile // Desactivar antialiasing en móvil para mejor rendimiento
+        });
+        renderer.setSize(sizes.width, sizes.height);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
+
+        // --- Lighting for "Tech" feel (Dark Blue) ---
+        const ambientLight = new THREE.AmbientLight(0xffffff, isMobile ? 1.2 : 1);
+        scene.add(ambientLight);
+
+        // Main Blue Light
+        const blueSpotLight = new THREE.SpotLight(0x0055ff, isMobile ? 25 : 35);
+        blueSpotLight.position.set(2, 5, 5);
+        blueSpotLight.angle = Math.PI / 4;
+        blueSpotLight.penumbra = 0.5;
+        scene.add(blueSpotLight);
+
+        // Secondary Blue Light (Fill)
+        const fillLight = new THREE.PointLight(0x00aaff, isMobile ? 15 : 20);
+        fillLight.position.set(-3, -2, 3);
+        scene.add(fillLight);
+
+        // Back Rim Light (for silhouette)
+        const rimLight = new THREE.DirectionalLight(0xffffff, isMobile ? 6 : 8);
+        rimLight.position.set(0, 3, -5);
+        scene.add(rimLight);
+        
+        // Additional front light for better visibility
+        const frontLight = new THREE.DirectionalLight(0xffffff, isMobile ? 4 : 6);
+        frontLight.position.set(0, 2, 5);
+        scene.add(frontLight);
+
+        // --- Load GLB Model ---
+        const loader = new GLTFLoader();
+        let model: THREE.Group | null = null;
+
+        loader.load(
+            '/Arivia.glb', 
+            (gltf) => {
+                model = gltf.scene;
+                
+                // Center the model
+                const box = new THREE.Box3().setFromObject(model);
+                const center = box.getCenter(new THREE.Vector3());
+                model.position.sub(center); // Center at (0,0,0)
+
+                // Ajustar escala según dispositivo
+                if (isMobile) {
+                    model.scale.set(0.7, 0.7, 0.7); // Más pequeño en móvil
+                    model.position.y = -0.3; // Bajar un poco en móvil
+                } else if (window.innerWidth < 1024) {
+                    model.scale.set(0.85, 0.85, 0.85); // Tablet
+                } else {
+                    model.scale.set(1, 1, 1); // Desktop tamaño normal
+                }
+
+                scene.add(model);
+
+                // Animación profesional de impresora en funcionamiento
+                const printerTimeline = gsap.timeline({ repeat: -1 });
+                
+                if (!isMobile) {
+                    // Desktop: Animación completa y detallada
+                    printerTimeline
+                        // Rotación lenta en Y para mostrar el producto (360° en 25 segundos)
+                        .to(model.rotation, {
+                            y: Math.PI * 2,
+                            duration: 25,
+                            ease: "none"
+                        }, 0)
+                        // Movimiento sutil vertical (simulando bandeja de papel)
+                        .to(model.position, {
+                            y: 0.08,
+                            duration: 2,
+                            ease: "power1.inOut",
+                            repeat: -1,
+                            yoyo: true
+                        }, 0)
+                        // Inclinación muy sutil en X (como si estuviera procesando)
+                        .to(model.rotation, {
+                            x: 0.03,
+                            duration: 3,
+                            ease: "sine.inOut",
+                            repeat: -1,
+                            yoyo: true
+                        }, 0)
+                        // Efecto de "respiración" muy sutil en escala
+                        .to(model.scale, {
+                            x: 1.02,
+                            y: 1.02,
+                            z: 1.02,
+                            duration: 4,
+                            ease: "sine.inOut",
+                            repeat: -1,
+                            yoyo: true
+                        }, 0);
+                } else {
+                    // Móvil: Animación simplificada para rendimiento
+                    printerTimeline
+                        // Rotación lenta
+                        .to(model.rotation, {
+                            y: Math.PI * 2,
+                            duration: 30,
+                            ease: "none"
+                        }, 0)
+                        // Solo movimiento vertical sutil
+                        .to(model.position, {
+                            y: model.position.y + 0.05,
+                            duration: 2.5,
+                            ease: "power1.inOut",
+                            repeat: -1,
+                            yoyo: true
+                        }, 0);
+                }
+                
+                // Scroll rotation hook
+                // rotateModel(); // Disabled scroll rotation
+            },
+            undefined,
+            (error) => {
+                console.error('An error occurred loading the model:', error);
+            }
+        );
+
+        // --- Resize Handler ---
+        window.addEventListener('resize', () => {
+            // Update sizes
+            sizes.width = window.innerWidth;
+            sizes.height = window.innerHeight;
+
+            // Update camera
+            camera.aspect = sizes.width / sizes.height;
+            camera.updateProjectionMatrix();
+
+            // Update renderer
+            const newIsMobile = window.innerWidth < 768;
+            renderer.setSize(sizes.width, sizes.height);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, newIsMobile ? 1.5 : 2));
+            
+            // Ajustar cámara según nuevo tamaño
+            if (newIsMobile) {
+                camera.fov = 60;
+                camera.position.z = 3.5;
+            } else {
+                camera.fov = 75;
+                camera.position.z = 2.8;
+            }
+            camera.updateProjectionMatrix();
+            
+            // Ajustar escala del modelo si existe
+            if (model) {
+                if (newIsMobile) {
+                    model.scale.set(0.7, 0.7, 0.7);
+                    model.position.y = -0.3;
+                } else if (window.innerWidth < 1024) {
+                    model.scale.set(0.85, 0.85, 0.85);
+                    model.position.y = 0;
+                } else {
+                    model.scale.set(1, 1, 1);
+                    model.position.y = 0;
+                }
+            }
+        });
+
+        // --- Animation Loop ---
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Subtle floating animation for the model if it exists (disabled on mobile for performance)
+            if(model && !isMobile) {
+                model.position.y = Math.sin(Date.now() * 0.001) * 0.1;
+            }
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+
+        // --- GSAP Scroll Animations ---
+
+        // Timeline para hero - solo anima el título
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".hero",
+                start: "top top",
+                end: "+=150%",
+                scrub: 1,
+                pin: true,
+            }
+        });
+
+        // Line 1: Moves Left
+        tl.to(".line-1", {
+            x: "-150%", 
+            opacity: 0,
+            duration: 1
+        }, "start");
+
+        // Line 3: Moves Right
+        tl.to(".line-3", {
+            x: "150%",
+            opacity: 0,
+            duration: 1
+        }, "start");
+
+        // Line 2: Gets Big, Fades Out
+        tl.to(".line-2", {
+            scale: 15,
+            opacity: 0, 
+            duration: 1.5,
+            ease: "power2.inOut"
+        }, "start");
+
+        // Nueva animación para hero-info (sección separada)
+        gsap.to(".hero-info", {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: ".info-section",
+                start: "top 80%",
+                end: "top 50%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        // Enhance 3D Model rotation on scroll
+        function rotateModel() {
+            // Disabled per user request
+            /*
+            if (model) {
+                gsap.to(model.rotation, {
+                    z: Math.PI * 0.5,
+                    scrollTrigger: {
+                        trigger: ".hero",
+                        start: "top top",
+                        end: "+=150%",
+                        scrub: 1
+                    }
+                });
+            }
+            */
+        }
+
+        // Reveal the main content below hero (Initial load animation)
+        gsap.to(".hero-info", { opacity: 1, y: 0, duration: 1, delay: 0.5 });
+
+        // Animate portfolio section entry (content comes up from below)
+        gsap.from(".portfolio-section .container", {
+            y: 100,
+            opacity: 0,
+            duration: 1,
+            scrollTrigger: {
+                trigger: ".portfolio-section",
+                start: "top 80%",
+                end: "top 50%",
+                scrub: 1
+            }
+        });
+
+
+        // --- Horizontal Scroll Section (Desktop Only) ---
+        const horizontalSection = document.querySelector(".horizontal-section");
+        const wrapper = document.querySelector(".horizontal-wrapper");
+
+        ScrollTrigger.matchMedia({
+            // Desktop
+            "(min-width: 1024px)": function() {
+                if (wrapper && horizontalSection) {
+                    gsap.to(wrapper, {
+                        x: "-250vw", // Move left by width of content
+                        ease: "none", // Linear movement for scroll
+                        scrollTrigger: {
+                            trigger: horizontalSection,
+                            pin: true,
+                            scrub: 1,
+                            start: "top top",
+                            end: "+=1500", // Reduced from 3000 to 1500 - much less scroll needed
+                        }
+                    });
+                }
+            },
+            // Mobile: No horizontal scroll logic required, CSS handles layout
+            "(max-width: 1023px)": function() {
+                // Optional: Could add simple fade-in for cards on scroll here
+                const cards = gsap.utils.toArray(".h-card");
+                cards.forEach((card: any) => {
+                    gsap.from(card, {
+                        y: 50,
+                        opacity: 0,
+                        duration: 0.8,
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 85%"
+                        }
+                    });
+                });
+            }
+        });
+
+        // --- Dot Grid Mouse Effect ---
+        const cards = document.querySelectorAll('.h-card');
+        cards.forEach(card => {
+            (card as HTMLElement).addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                (card as HTMLElement).style.setProperty('--x', `${x}px`);
+                (card as HTMLElement).style.setProperty('--y', `${y}px`);
+            });
+        });
+    }
+</script>
