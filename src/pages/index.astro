@@ -425,8 +425,8 @@ import Layout from '../layouts/Layout.astro';
             scrollTrigger: {
                 trigger: ".hero",
                 start: "top top",
-                end: "+=150%",
-                scrub: 1,
+                end: "+=100%", // Reduced duration to make it faster
+                scrub: true,   // Instant/Constant scrubbing
                 pin: true,
             }
         });
@@ -435,14 +435,16 @@ import Layout from '../layouts/Layout.astro';
         tl.to(".line-1", {
             x: "-150%", 
             opacity: 0,
-            duration: 1
+            duration: 1,
+            ease: "none"
         }, "start");
 
         // Line 3: Moves Right
         tl.to(".line-3", {
             x: "150%",
             opacity: 0,
-            duration: 1
+            duration: 1,
+            ease: "none"
         }, "start");
 
         // Line 2: Gets Big, Fades Out
@@ -450,7 +452,7 @@ import Layout from '../layouts/Layout.astro';
             scale: 15,
             opacity: 0, 
             duration: 1.5,
-            ease: "power2.inOut"
+            ease: "none"
         }, "start");
 
         // Nueva animación para hero-info (sección separada)

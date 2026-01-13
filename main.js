@@ -126,8 +126,8 @@ const tl = gsap.timeline({
     scrollTrigger: {
         trigger: ".hero",
         start: "top top",
-        end: "+=150%", // Scroll distance duration
-        scrub: 1,      // Smooth scrubbing
+        end: "+=100%", // Scroll distance duration (Reduced to make it faster)
+        scrub: true,   // Instant scrubbing (Constant feel)
         pin: true,     // Pin the hero section while animating
     }
 });
@@ -136,14 +136,16 @@ const tl = gsap.timeline({
 tl.to(".line-1", {
     x: "-150%", 
     opacity: 0,
-    duration: 1
+    duration: 1,
+    ease: "none"   // Constant speed
 }, "start");
 
 // Line 3: Moves Right
 tl.to(".line-3", {
     x: "150%",
     opacity: 0,
-    duration: 1
+    duration: 1,
+    ease: "none"   // Constant speed
 }, "start");
 
 // Line 2: Gets Big, Fades Out (NO BLUR as requested)
@@ -152,7 +154,7 @@ tl.to(".line-2", {
     opacity: 0, 
     // Removed blur for performance and crispness
     duration: 1.5,
-    ease: "power2.inOut"
+    ease: "none"   // Constant speed
 }, "start");
 
 // Fade out the info text
@@ -171,9 +173,10 @@ const rotateModel = () => {
             scrollTrigger: {
                  trigger: ".hero",
                  start: "top top",
-                 end: "+=150%",
-                 scrub: 1
-            }
+                 end: "+=100%", // Reduced to match hero timeline
+                 scrub: true,   // Constant
+            },
+            ease: "none" // Constant
         });
     } else {
         requestAnimationFrame(rotateModel);
