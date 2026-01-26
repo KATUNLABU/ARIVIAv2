@@ -1,0 +1,532 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Gachapon from '../components/Gachapon.astro';
+---
+
+<Layout title="¿Qué Arivia Comprar? | Encuesta Interactiva">
+    <div class="page-background">
+        <div class="ornament ornament-1"></div>
+        <div class="ornament ornament-2"></div>
+    </div>
+    
+    <main class="survey-page">
+        <div class="content-wrapper">
+            <header class="survey-header">
+                <h1>¿Qué <span class="gradient-text">Arivia</span> necesitas?</h1>
+                <p>Responde estas sencillas preguntas y deja que el Gachapon del destino decida tu futuro de impresión.</p>
+            </header>
+
+            <div class="survey-container">
+                <!-- Question 1 -->
+                <div class="step active" id="step-1">
+                    <div class="question-card">
+                        <span class="step-indicator">Paso 1 de 2</span>
+                        <h2>¿Cómo ves el mundo de tu empresa?</h2>
+                        <div class="options-grid">
+                            <button class="option-btn" onclick="selectOption('type', 'color')">
+                                <div class="icon">🎨</div>
+                                <h3>A todo Color</h3>
+                                <p>Necesito impacto, gráficos y vida en mis documentos.</p>
+                            </button>
+                            <button class="option-btn" onclick="selectOption('type', 'mono')">
+                                <div class="icon">✒️</div>
+                                <h3>Monocromático</h3>
+                                <p>Eficiencia pura. Blanco y negro es todo lo que necesito.</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="step" id="step-2">
+                    <div class="question-card">
+                        <span class="step-indicator">Paso 2 de 2</span>
+                        <h2>¿A qué velocidad se mueve tu negocio?</h2>
+                        <div class="options-grid">
+                            <button class="option-btn" onclick="selectOption('speed', 'low')">
+                                <div class="icon">🐢</div>
+                                <h3>Paso Firme</h3>
+                                <p>Volumen moderado. Calidad sobre cantidad masiva (25-30 ppm).</p>
+                            </button>
+                            <button class="option-btn" onclick="selectOption('speed', 'high')">
+                                <div class="icon">🚀</div>
+                                <h3>Velocidad Luz</h3>
+                                <p>Alto volumen de impresión. Necesito rapidez (35-65 ppm).</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gachapon Step -->
+                <div class="step" id="step-gachapon">
+                    <div class="gachapon-wrapper">
+                        <h2>¡Resultados listos!</h2>
+                        <p class="instruction">Haz clic en la máquina para obtener tu modelo ideal</p>
+                        <div id="gachapon-trigger">
+                            <Gachapon id="my-gachapon" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result Step -->
+                <div class="step" id="step-result">
+                    <div class="result-card">
+                        <div class="result-content-grid">
+                            <div class="result-text">
+                                <div class="badge">TU MEJOR OPCIÓN</div>
+                                <h2 id="family-title">Familia X</h2>
+                                <p id="model-names" class="model-names">Modelos: A, B, C</p>
+                                
+                                <div class="specs-box">
+                                    <h3>Especificaciones Clave:</h3>
+                                    <ul id="specs-list">
+                                        <!-- Populated by JS -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="result-image-container">
+                                <img id="result-img" src="" alt="Tu Arivia Ideal" />
+                            </div>
+                        </div>
+                        
+                        <div class="actions">
+                            <a href="/#contact" class="btn-primary">Solicitar Cotización</a>
+                            <button class="btn-text" onclick="resetSurvey()">Volver a jugar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<script>
+    // State
+    const surveyState = {
+        type: null, // 'color' | 'mono'
+        speed: null // 'low' | 'high'
+    };
+
+    // Data based on user prompt
+    const recommendations = {
+        'color-low': {
+            family: 'Familia 1 (C21)',
+            models: 'Arivia C2125, Arivia C2130',
+            specs: ['Hasta 250 gr', 'Hasta 80 ipm', 'Una bandeja incluida', 'Velocidad: 25-30 ppm'],
+            image: '/C2125.png'
+        },
+        'color-high': {
+            family: 'Familia 2 (C31/C41)',
+            models: 'Arivia C3135, C3145, C4155, C4165',
+            specs: ['Hasta 300 gr', 'Hasta 270 ipm', 'Equipos a Piso', 'Alta productividad'],
+            image: '/C4165%20(1).png'
+        },
+        'mono-low': {
+            family: 'Familia 3 (M21/M31)',
+            models: 'Arivia M2125, M2130, M3135',
+            specs: ['Hasta 80 ipm', 'Reciclado de tóner (M3135)', 'Ideal para oficina eficiente'],
+            image: '/M3135%20(2).png'
+        },
+        'mono-high': {
+            family: 'Familia 4 (M31/M41)',
+            models: 'Arivia M3145, Arivia M4155',
+            specs: ['Hasta 160 ipm', 'Equipos a piso', 'Alto rendimiento monocromático'],
+            image: '/M4155%20(1).png'
+        }
+    };
+
+    // Functions attached to window for inline onclicks (simple approach) or event listeners
+    // We use explicit window assignment for inline handlers in Astro scripts if not using define:vars
+    
+    window.selectOption = (category, value) => {
+        surveyState[category] = value;
+        
+        if (category === 'type') {
+            document.getElementById('step-1').classList.remove('active');
+            setTimeout(() => {
+                document.getElementById('step-1').style.display = 'none';
+                document.getElementById('step-2').style.display = 'block';
+                // Small delay to allow display block to apply before opacity transition
+                requestAnimationFrame(() => {
+                    document.getElementById('step-2').classList.add('active');
+                });
+            }, 500);
+        } else if (category === 'speed') {
+            document.getElementById('step-2').classList.remove('active');
+            setTimeout(() => {
+                document.getElementById('step-2').style.display = 'none';
+                document.getElementById('step-gachapon').style.display = 'block';
+                requestAnimationFrame(() => {
+                     document.getElementById('step-gachapon').classList.add('active');
+                });
+            }, 500);
+        }
+    };
+
+    // Gachapon Interaction
+    const gachaponEl = document.getElementById('my-gachapon');
+    const trigger = document.getElementById('gachapon-trigger');
+
+    trigger.addEventListener('click', () => {
+        if(gachaponEl.classList.contains('spinning')) return;
+
+        // 1. Shake and Spin
+        gachaponEl.classList.add('spinning');
+        gachaponEl.classList.add('shaking');
+
+        // 2. Stop shake, keep spin for a bit, then pop
+        setTimeout(() => {
+            gachaponEl.classList.remove('shaking');
+            
+            // Pop the ball
+            const ball = gachaponEl.querySelector('.result-ball');
+            ball.classList.remove('hidden');
+            setTimeout(() => ball.classList.add('popped'), 100);
+
+            // Show Result Card after animation
+            setTimeout(() => {
+                showResult();
+            }, 1500);
+
+        }, 1000);
+    });
+
+    function showResult() {
+        const key = `${surveyState.type}-${surveyState.speed}`;
+        const data = recommendations[key];
+
+        if (data) {
+            document.getElementById('family-title').textContent = data.family;
+            document.getElementById('model-names').textContent = data.models;
+            const imgEl = document.getElementById('result-img');
+            imgEl.src = data.image;
+            
+            const list = document.getElementById('specs-list');
+            list.innerHTML = data.specs.map(s => `<li>${s}</li>`).join('');
+            
+            document.getElementById('step-gachapon').classList.remove('active');
+             setTimeout(() => {
+                document.getElementById('step-gachapon').style.display = 'none';
+                document.getElementById('step-result').style.display = 'block';
+                 requestAnimationFrame(() => {
+                     document.getElementById('step-result').classList.add('active');
+                 });
+            }, 500);
+        }
+    }
+
+    window.resetSurvey = () => {
+        // Reset UI
+        document.getElementById('step-result').classList.remove('active');
+        document.getElementById('step-result').style.display = 'none';
+        
+        // Reset Gachapon
+        gachaponEl.classList.remove('spinning');
+        const ball = gachaponEl.querySelector('.result-ball');
+        ball.classList.remove('popped');
+        ball.classList.add('hidden');
+
+        // Reset Steps
+        document.getElementById('step-1').style.display = 'block';
+        setTimeout(() => document.getElementById('step-1').classList.add('active'), 50);
+
+        surveyState.type = null;
+        surveyState.speed = null;
+    };
+    
+    // Initial State Check
+    document.addEventListener('DOMContentLoaded', () => {
+        // Ensure only step 1 is visible
+        document.getElementById('step-2').style.display = 'none';
+        document.getElementById('step-gachapon').style.display = 'none';
+        document.getElementById('step-result').style.display = 'none';
+    });
+</script>
+
+<style>
+    /* Page Layout */
+    .survey-page {
+        min-height: 100vh;
+        padding-top: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        font-family: var(--font-body, sans-serif);
+    }
+
+    .content-wrapper {
+        width: 100%;
+        max-width: 900px;
+        text-align: center;
+        padding: 2rem;
+        z-index: 2;
+    }
+
+    /* Header */
+    .survey-header {
+        margin-bottom: 3rem;
+    }
+
+    .survey-header h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: 1rem;
+        color: var(--text-color, #1a1a1d);
+        font-family: var(--font-titles, sans-serif);
+    }
+
+    .gradient-text {
+        background: linear-gradient(135deg, var(--accent-color, #0066ff) 0%, #556270 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* Steps & Transition */
+    .step {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        display: none; /* Controlled by JS */
+    }
+
+    .step.active {
+        opacity: 1;
+        transform: translateY(0);
+        display: block;
+    }
+
+    /* Cards */
+    .question-card, .result-card {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 3rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        border: 1px solid rgba(0,0,0,0.05);
+        backdrop-filter: blur(10px);
+    }
+
+    .step-indicator {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.8rem;
+        color: #999;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .options-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+        .options-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .option-btn {
+        background: #fcfcfc;
+        border: 2px solid transparent;
+        border-radius: 15px;
+        padding: 2rem;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    }
+
+    .option-btn:hover {
+        border-color: var(--accent-color, #0066ff);
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 102, 255, 0.15);
+    }
+
+    .icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .option-btn h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-color, #333);
+        font-family: var(--font-titles, sans-serif);
+    }
+
+    .option-btn p {
+        font-size: 0.9rem;
+        color: #666;
+        line-height: 1.5;
+    }
+    
+    /* Gachapon Step */
+    .gachapon-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .instruction {
+        margin-bottom: 1.5rem;
+        color: #666;
+    }
+
+    /* Result Styling */
+    .result-card {
+        padding: 0;
+        overflow: hidden;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    
+    .result-content-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+    }
+    
+    @media (max-width: 768px) {
+        .result-content-grid {
+            grid-template-columns: 1fr;
+        }
+        .result-image-container {
+            order: -1;
+            height: 250px;
+        }
+    }
+    
+    .result-text {
+        padding: 3rem;
+        text-align: left;
+    }
+    
+    .result-image-container {
+        background: #f4f6f9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+    }
+    
+    .result-image-container img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+    }
+    
+    .badge {
+        background: var(--text-color, #333);
+        color: white;
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+    .model-names {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--accent-color, #0066ff);
+        margin-bottom: 2rem;
+        font-family: var(--font-titles, sans-serif);
+    }
+
+    .specs-box {
+        background: rgba(0, 102, 255, 0.05);
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin: 2rem 0;
+        text-align: left;
+    }
+
+    .specs-box ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .specs-box li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        display: flex;
+        align-items: center;
+        color: #555;
+    }
+    
+    .specs-box li::before {
+        content: "✓";
+        color: #2ecc71;
+        margin-right: 10px;
+        font-weight: bold;
+    }
+
+    .actions {
+        padding: 2rem;
+        background: #fafafa;
+        border-top: 1px solid #eee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .btn-primary {
+        background: var(--accent-color, #0066ff);
+        color: white;
+        padding: 1rem 2rem;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        display: inline-block;
+        transition: transform 0.2s;
+        box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+    }
+    
+    .btn-primary:hover {
+        transform: translateY(-2px);
+    }
+
+    .btn-text {
+        background: none;
+        border: none;
+        color: #666;
+        margin-left: 1rem;
+        cursor: pointer;
+        text-decoration: underline;
+        font-family: inherit;
+    }
+
+    /* Background Ornaments */
+    .page-background {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        opacity: 0.5;
+        overflow: hidden;
+    }
+    
+    .ornament {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+    }
+    
+    .ornament-1 {
+        width: 400px;
+        height: 400px;
+        background: rgba(0, 102, 255, 0.1);
+        top: -100px;
+        left: -100px;
+    }
+    
+    .ornament-2 {
+        width: 300px;
+        height: 300px;
+        background: rgba(255, 255, 255, 0.8);
+        bottom: -50px;
+        right: -50px;
+    }
+</style>

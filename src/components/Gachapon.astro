@@ -1,0 +1,77 @@
+---
+// src/components/Gachapon.astro
+interface Props {
+  id?: string;
+}
+const { id = "gachapon" } = Astro.props;
+---
+<div class="gachapon-component" id={id}>
+  <img src="/gachapon.svg" alt="Gachapon Machine" class="gachapon-img" />
+  
+  <div class="result-ball hidden">
+    <span class="question-mark">?</span>
+  </div>
+</div>
+
+<style>
+  .gachapon-component {
+    width: 500px; /* Increased size */
+    height: auto;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  
+  .gachapon-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.1s;
+  }
+
+  /* Animations */
+  .gachapon-component.shaking .gachapon-img {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+  }
+
+  .result-ball {
+    position: absolute;
+    bottom: 20%; /* Position where it comes out, adjust based on SVG hole */
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    width: 60px;
+    height: 60px;
+    /* Katun Orange Gradient */
+    background: radial-gradient(circle at 30% 30%, #FF8C00, #E65100);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 10;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .result-ball.popped {
+    /* Pop out and drop down */
+    transform: translateX(-50%) scale(1) translateY(80px);
+  }
+  
+  .result-ball.hidden {
+    display: none;
+  }
+
+  @keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0) rotate(-1deg); }
+    20%, 80% { transform: translate3d(2px, 0, 0) rotate(1deg); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0) rotate(-2deg); }
+    40%, 60% { transform: translate3d(4px, 0, 0) rotate(2deg); }
+  }
+</style>

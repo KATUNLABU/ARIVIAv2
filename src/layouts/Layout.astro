@@ -22,7 +22,39 @@ import '../styles/global.css';
 		<title>{title}</title>
 	</head>
 	<body>
-		<slot />
+    <nav>
+        <a href="/" class="logo">
+            <div class="diamond"></div> 
+            ARIVIA
+        </a>
+        
+        <button class="mobile-menu-btn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-links">
+            <a href="/">INICIO</a>
+            <a href="/que-arivia-comprar">TU ARIVIA IDEAL</a>
+            <a href="/contacto">CONTACTO</a>
+        </div>
+        <a href="/contacto" class="nav-btn">CONSULTORÍA TCO</a>
+    </nav>
+	<slot />
+    
+    <script>
+        // Mobile Menu Logic
+        const mobileBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileBtn && navLinks) {
+            mobileBtn.addEventListener('click', () => {
+                mobileBtn.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+        }
+    </script>
         <!-- GSAP and Three.js will be imported in the page script for better bundling, 
              but we can also leave them here if we want to use CDN for caching -->
 	</body>

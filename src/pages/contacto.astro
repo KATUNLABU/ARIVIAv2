@@ -1,0 +1,260 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contacto | Katun Arivia">
+    <div class="page-background">
+        <div class="ornament ornament-1"></div>
+        <div class="ornament ornament-2"></div>
+    </div>
+
+    <main class="contact-page">
+        <div class="container">
+            <h1 class="page-title">Hablemos de <span class="gradient-text">Negocios</span></h1>
+            <p class="subtitle">Estamos listos para optimizar tu flujo de impresión. Envíanos un mensaje.</p>
+
+            <div class="contact-grid">
+                <!-- Form Section -->
+                <div class="form-card">
+                    <h2>Envíanos un mensaje</h2>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nombre Completo</label>
+                            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" placeholder="tucorreo@empresa.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+52 (55) 1234 5678">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" rows="5" placeholder="¿En qué podemos ayudarte?" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary">Enviar Mensaje</button>
+                    </form>
+                </div>
+
+                <!-- Info Section -->
+                <div class="info-card">
+                    <div class="info-item">
+                        <div class="icon">📍</div>
+                        <div>
+                            <h3>Ubicación</h3>
+                            <p>Ciudad de México, México</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="icon">📧</div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>contacto@arivia-katun.com</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="icon">📞</div>
+                        <div>
+                            <h3>Teléfono</h3>
+                            <p>+52 (55) 5555 5555</p>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <!-- Add social icons here if needed -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    .contact-page {
+        min-height: 100vh;
+        padding-top: 120px;
+        padding-bottom: 50px;
+        font-family: var(--font-body, sans-serif);
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .page-title {
+        font-size: 3.5rem;
+        text-align: center;
+        margin-bottom: 0.5rem;
+        color: var(--text-color, #1a1a1d);
+        font-family: var(--font-titles, sans-serif);
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #666;
+        font-size: 1.2rem;
+        margin-bottom: 4rem;
+    }
+
+    .gradient-text {
+        background: linear-gradient(135deg, var(--accent-color, #0066ff) 0%, #556270 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 2rem;
+        align-items: start;
+    }
+
+    @media (max-width: 768px) {
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Form Card */
+    .form-card {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 3rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        backdrop-filter: blur(10px);
+    }
+
+    .form-card h2 {
+        margin-bottom: 2rem;
+        color: var(--text-color, #333);
+        font-size: 1.8rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: #444;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid #eee;
+        border-radius: 10px;
+        font-family: inherit;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+        background: #f9f9f9;
+        color: #333;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        border-color: var(--accent-color, #0066ff);
+        outline: none;
+        background: white;
+    }
+
+    .btn-primary {
+        width: 100%;
+        background: var(--accent-color, #0066ff);
+        color: white;
+        padding: 1rem;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        background-color: #0056d6;
+    }
+
+    /* Info Card */
+    .info-card {
+        background: var(--text-color, #1a1a1d);
+        color: white;
+        padding: 3rem;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .info-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 2.5rem;
+    }
+
+    .info-item .icon {
+        font-size: 1.5rem;
+        margin-right: 1.5rem;
+        background: rgba(255,255,255,0.1);
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+    }
+
+    .info-item h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: #aaa;
+    }
+
+    .info-item p {
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+
+    /* Background Ornaments */
+    .page-background {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        opacity: 0.5;
+        pointer-events: none;
+    }
+    
+    .ornament {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+    }
+    
+    .ornament-1 {
+        width: 600px;
+        height: 600px;
+        background: rgba(0, 102, 255, 0.05);
+        top: -200px;
+        right: -200px;
+    }
+    
+    .ornament-2 {
+        width: 400px;
+        height: 400px;
+        background: rgba(0, 102, 255, 0.08);
+        bottom: -100px;
+        left: -100px;
+    }
+</style>
